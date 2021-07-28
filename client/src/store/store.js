@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from '@reduxjs/toolkit';
 import thunk from "redux-thunk";
+import gameReducer from './game';
 let enhancer;
 
 const rootReducer = combineReducers({
-  // reducers
+  game: gameReducer,
 });
 
 if (process.env.NODE_ENV === "production") {
