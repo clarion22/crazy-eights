@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 // import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { dealDeck, playCard, dealCard } from './store/game';
+import { dealDeck, playCard, dealCard, opponentPlay } from './store/game';
 import { validMove, movesLeft } from './util/deck_logic';
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
 	const testFunc2 = (card) => {
 		if (validMove(card, activeCard)) {
 			dispatch(playCard(card));
+			setTimeout(() => dispatch(opponentPlay()), 1000);
 		}
 	};
 
@@ -32,7 +33,9 @@ function App() {
 			<div>Hello</div>
 			<button onClick={testFunc}>Click Me</button>
 			<button
-				onClick={() => testFunc2({ value: 3, type: 'Spades', name: 3 })}
+				onClick={() =>
+					testFunc2({ value: 10, type: 'Hearts', name: 10 })
+				}
 			>
 				Play Card
 			</button>

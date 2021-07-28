@@ -3,7 +3,7 @@ import { generateDeck } from '../util/deck_logic';
 const DEAL_DECK = 'deck/dealDeck';
 const PLAY_CARD = 'deck/playCard';
 const DEAL_CARD = 'deck/dealCard';
-
+const OPPONENT_PLAY = 'deck/opponentPlay';
 // actions
 export const dealDeck = () => {
 	return {
@@ -21,6 +21,12 @@ export const playCard = (payload) => {
 export const dealCard = () => {
 	return {
 		type: DEAL_CARD,
+	};
+};
+
+export const opponentPlay = () => {
+	return {
+		type: OPPONENT_PLAY,
 	};
 };
 
@@ -69,6 +75,38 @@ const gameReducer = (state = initialState, action) => {
 			state.deck.shift();
 			state.player.push(card);
 			return state;
+		case OPPONENT_PLAY:
+			let opponentCards = state.opponent;
+			let activeCard = state.activeCard;
+			let possibleCards = opponentCards.filter((card) => {
+				if (
+					card.type === activeCard.type ||
+					card.value === activeCard.value
+				) {
+					return card;
+				}
+			});
+			console.log('POSSIBLE CARDS', possibleCards);
+			if (possibleCards.length === 0) {
+				// deal card
+			} else {
+				let playedCard = possibleCards[0];
+				opponentCards.forEach((card) => {
+					console.log(card.name === playedCard.name, card);
+				});
+				let cards = opponentCards.filter((card) => {
+					if (
+						card.name !== playedCard.name &&
+						card.type !== playedCard.type &&
+						card.value !== playedCard.value
+					) {
+						return card;
+					}
+				});
+				state.opponent = cards;
+				state.activeCard = playedCard;
+				return state;
+			}
 		default:
 			return state;
 	}
