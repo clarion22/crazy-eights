@@ -3,14 +3,11 @@ import './styles/board.css';
 
 function Card({ card, selectCard, selected }) {
 	if (!card) return null;
-	const updateCard = (card) => {
-		selectCard(card);
-	};
 
 	return (
 		<div
 			className={selected ? 'card--selected' : 'card'}
-			onClick={() => updateCard(card)}
+			onClick={() => selectCard(card)}
 		>
 			<div>{card.name}</div>
 			<div>{card.type}</div>

@@ -6,20 +6,17 @@ import Card from './Card';
 import _ from 'lodash';
 import './styles/board.css';
 
-let divs = [];
-for (let i = 0; i < 8; i++) {
-	divs.push(<div key={i} className='card'></div>);
-}
-
 function Board() {
 	const dispatch = useDispatch();
 	const player = useSelector((state) => state.game.player);
 	const opponent = useSelector((state) => state.game.opponent);
+	const deck = useSelector((state) => state.game.deck);
 	const activeCard = useSelector((state) => state.game.activeCard);
 
 	const [gameSession, setGameSession] = useState(false);
 	const [chosenCard, setChosenCard] = useState({});
 	const [totalMoves, setTotalMoves] = useState(0);
+	const [winner, setWinner] = useState(false);
 
 	const selectedCard = useRef({ name: '', value: 0, type: '' });
 
@@ -51,8 +48,20 @@ function Board() {
 		}
 	};
 
+	const checkWin = () => {
+		if (gameSession) {
+			if (player.length === 0) {
+				setWinner(true);
+			}
+			if (deck.length === 0) {
+				setWinner(true);
+			}
+		}
+	};
+
 	useEffect(() => {
 		console.log('player', player);
+		checkWin();
 	}, [totalMoves]);
 
 	return (
@@ -74,6 +83,7 @@ function Board() {
 			<div className='board_activecard'>
 				<div className='deck_middle_wrapper'>
 					<div>
+						{winner ? <div>Congrats you won!!!</div> : ''}
 						<button onClick={beginGame}>Start Game</button>
 						<button onClick={giveCard}>Deal Card</button>
 						<button onClick={() => makeMove(selectedCard.current)}>
