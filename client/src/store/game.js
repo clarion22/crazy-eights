@@ -1,4 +1,5 @@
 import { generateDeck } from '../util/deck_logic';
+import _ from 'lodash';
 // action types
 const DEAL_DECK = 'deck/dealDeck';
 const PLAY_CARD = 'deck/playCard';
@@ -57,11 +58,7 @@ const gameReducer = (state = initialState, action) => {
 			let playerCards = Object.values(state.player);
 
 			let cards = playerCards.filter((card) => {
-				if (
-					card.name !== playedCard.name &&
-					card.type !== playedCard.type &&
-					card.value !== playedCard.value
-				) {
+				if (!_.isEqual(card, playedCard)) {
 					return card;
 				}
 			});
@@ -89,30 +86,8 @@ const gameReducer = (state = initialState, action) => {
 				// deal card
 			} else {
 				let playedCard = possibleCards[0];
-				opponentCards.forEach((card) => {
-					console.log(
-						card.name !== playedCard.name &&
-							card.type !== playedCard.type &&
-							card.value !== playedCard.value
-					);
-					console.log(
-						'name',
-						card.name !== playedCard.name,
-						typeof card.name
-					);
-					console.log('type', card.type !== playedCard.type);
-					console.log(
-						'value',
-						Number(card.value) !== Number(card.value)
-					);
-					console.log(card, playedCard);
-				});
 				let cards = opponentCards.filter((card) => {
-					if (
-						card.name !== playedCard.name &&
-						card.type !== playedCard.type &&
-						card.value !== playedCard.value
-					) {
+					if (!_.isEqual(card, playedCard)) {
 						return card;
 					}
 				});

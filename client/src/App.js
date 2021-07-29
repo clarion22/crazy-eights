@@ -33,9 +33,7 @@ function App() {
 			<div>Hello</div>
 			<button onClick={testFunc}>Click Me</button>
 			<button
-				onClick={() =>
-					testFunc2({ value: 8, type: 'Diamonds', name: 8 })
-				}
+				onClick={() => testFunc2({ value: 2, type: 'Hearts', name: 2 })}
 			>
 				Play Card
 			</button>
