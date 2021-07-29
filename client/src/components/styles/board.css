@@ -23,16 +23,29 @@
 	display: flex;
 }
 
-.deck_displayed {
+#deck_displayed {
 	background-color: hotpink;
 	margin-right: 30px;
 }
 
-.deck_activecard {
+#deck_activecard {
 	background-color: brown;
 }
 
 .card {
 	height: 200px;
 	width: 160px;
+	background-color: yellow;
+	margin: 10px 10px;
+}
+
+.deck_wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.deck_content_wrapper {
+	display: flex;
+	flex-wrap: wrap;
 }
