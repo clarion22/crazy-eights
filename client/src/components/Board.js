@@ -19,6 +19,7 @@ function Board() {
 
 	const [gameSession, setGameSession] = useState(false);
 	const [chosenCard, setChosenCard] = useState({});
+	const [totalMoves, setTotalMoves] = useState(0);
 
 	const selectedCard = useRef({ name: '', value: 0, type: '' });
 
@@ -29,7 +30,7 @@ function Board() {
 
 	const giveCard = () => {
 		dispatch(dealCard());
-		//
+		setTotalMoves((prev) => prev + 1);
 	};
 
 	const selectCard = (card) => {
@@ -41,7 +42,10 @@ function Board() {
 	const makeMove = (card) => {
 		if (validMove(card, activeCard)) {
 			dispatch(playCard(card));
-			setTimeout(() => dispatch(opponentPlay()), 1000);
+			setTimeout(() => {
+				dispatch(opponentPlay());
+				setTotalMoves((prev) => prev + 1);
+			}, 1000);
 		} else {
 			console.log('not a valid move');
 		}
@@ -49,7 +53,7 @@ function Board() {
 
 	useEffect(() => {
 		console.log('player', player);
-	}, [player.length]);
+	}, [totalMoves]);
 
 	return (
 		<div className='board_wrapper'>
