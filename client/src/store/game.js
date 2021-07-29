@@ -50,7 +50,7 @@ const gameReducer = (state = initialState, action) => {
 			}
 			deck.splice(0, 16);
 			state.activeCard = deck[0];
-			deck.unshift();
+			deck.shift();
 			state.deck = deck;
 			return state;
 		case PLAY_CARD:
@@ -83,7 +83,9 @@ const gameReducer = (state = initialState, action) => {
 			});
 			console.log('POSSIBLE CARDS', possibleCards);
 			if (possibleCards.length === 0) {
-				// deal card
+				let card = state.deck[0];
+				state.deck.shift();
+				state.opponent.push(card);
 			} else {
 				let playedCard = possibleCards[0];
 				let cards = opponentCards.filter((card) => {

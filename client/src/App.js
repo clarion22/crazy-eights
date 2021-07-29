@@ -17,6 +17,8 @@ function App() {
 		if (validMove(card, activeCard)) {
 			dispatch(playCard(card));
 			setTimeout(() => dispatch(opponentPlay()), 1000);
+		} else {
+			console.log('not a valid move');
 		}
 	};
 
@@ -33,7 +35,9 @@ function App() {
 			<div>Hello</div>
 			<button onClick={testFunc}>Click Me</button>
 			<button
-				onClick={() => testFunc2({ value: 2, type: 'Hearts', name: 2 })}
+				onClick={() =>
+					testFunc2({ value: 13, type: 'Hearts', name: 'King' })
+				}
 			>
 				Play Card
 			</button>
