@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { dealDeck } from '../store/game';
+import { dealDeck, dealCard } from '../store/game';
 import Card from './Card';
 import './styles/board.css';
 
@@ -22,16 +22,24 @@ function Board() {
 		dispatch(dealDeck());
 	};
 
+	const giveCard = () => {
+		dispatch(dealCard());
+	};
+
 	return (
 		<div className='board_wrapper'>
 			<div className='deck_wrapper'>
-				<div className='deck_content_wrapper'>{divs}</div>
+				<div className='deck_content_wrapper'>
+					{opponent.map((card) => {
+						return <Card card={card} />;
+					})}
+				</div>
 			</div>
 			<div className='board_activecard'>
 				<div className='deck_middle_wrapper'>
 					<div>
 						<button onClick={beginGame}>Start Game</button>
-						<button>Deal Card</button>
+						<button onClick={giveCard}>Deal Card</button>
 					</div>
 					<div id='deck_displayed' className='card'>
 						DECK

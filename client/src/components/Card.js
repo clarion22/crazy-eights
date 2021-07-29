@@ -4,9 +4,9 @@ import './styles/board.css';
 function Card({ card }) {
 	return (
 		<div className='card'>
-			{card.name}
-			{card.type}
-			{card.value}
+			<div>{card.name}</div>
+			<div>{card.type}</div>
+			<div>{card.value}</div>
 		</div>
 	);
 }
