@@ -41,6 +41,13 @@
 	margin: 10px 10px;
 }
 
+.card:hover {
+	height: 200px;
+	width: 160px;
+	background-color: lightgreen;
+	margin: 10px 10px;
+}
+
 .deck_wrapper {
 	display: flex;
 	align-items: center;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dealDeck, dealCard } from '../store/game';
 import Card from './Card';
@@ -16,6 +16,7 @@ function Board() {
 	const activeCard = useSelector((state) => state.game.activeCard);
 
 	const [gameSession, setGameSession] = useState(false);
+	const selectedCard = useRef({ name: '', value: 0, type: '' });
 
 	const beginGame = () => {
 		setGameSession(true);
@@ -26,12 +27,23 @@ function Board() {
 		dispatch(dealCard());
 	};
 
+	const selectCard = (card) => {
+		selectedCard.current = card;
+		console.log('currentCard', selectedCard.current);
+	};
+
 	return (
 		<div className='board_wrapper'>
 			<div className='deck_wrapper'>
 				<div className='deck_content_wrapper'>
-					{opponent.map((card) => {
-						return <Card card={card} />;
+					{opponent.map((card, index) => {
+						return (
+							<Card
+								key={index}
+								card={card}
+								selectCard={selectCard}
+							/>
+						);
 					})}
 				</div>
 			</div>
@@ -49,8 +61,14 @@ function Board() {
 			</div>
 			<div className='deck_wrapper'>
 				<div className='deck_content_wrapper'>
-					{player.map((card) => {
-						return <Card card={card} />;
+					{player.map((card, index) => {
+						return (
+							<Card
+								key={index}
+								card={card}
+								selectCard={selectCard}
+							/>
+						);
 					})}
 				</div>
 			</div>
