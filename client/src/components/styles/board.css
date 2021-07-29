@@ -58,3 +58,10 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.card--selected {
+	height: 200px;
+	width: 160px;
+	background-color: aliceblue;
+	margin: 10px 10px;
+}

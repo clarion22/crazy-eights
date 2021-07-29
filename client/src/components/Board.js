@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dealDeck, dealCard } from '../store/game';
 import Card from './Card';
+import _ from 'lodash';
 import './styles/board.css';
 
 let divs = [];
@@ -16,6 +17,8 @@ function Board() {
 	const activeCard = useSelector((state) => state.game.activeCard);
 
 	const [gameSession, setGameSession] = useState(false);
+	const [chosenCard, setChosenCard] = useState({});
+
 	const selectedCard = useRef({ name: '', value: 0, type: '' });
 
 	const beginGame = () => {
@@ -29,8 +32,11 @@ function Board() {
 
 	const selectCard = (card) => {
 		selectedCard.current = card;
+		setChosenCard(card);
 		console.log('currentCard', selectedCard.current);
 	};
+
+	useEffect(() => {}, []);
 
 	return (
 		<div className='board_wrapper'>
@@ -42,6 +48,7 @@ function Board() {
 								key={index}
 								card={card}
 								selectCard={selectCard}
+								selected={false}
 							/>
 						);
 					})}
@@ -67,6 +74,7 @@ function Board() {
 								key={index}
 								card={card}
 								selectCard={selectCard}
+								selected={_.isEqual(card, chosenCard)}
 							/>
 						);
 					})}
