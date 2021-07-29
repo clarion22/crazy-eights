@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { dealDeck, playCard, dealCard, opponentPlay } from './store/game';
 import { validMove, movesLeft } from './util/deck_logic';
 
+import Board from './components/Board';
+
+import './App.css';
+
 function App() {
 	const activeCard = useSelector((state) => state.game.activeCard);
 	const player = useSelector((state) => state.game.player);
@@ -31,17 +35,8 @@ function App() {
 		}
 	}, [activeCard]);
 	return (
-		<div>
-			<div>Hello</div>
-			<button onClick={testFunc}>Click Me</button>
-			<button
-				onClick={() =>
-					testFunc2({ value: 13, type: 'Hearts', name: 'King' })
-				}
-			>
-				Play Card
-			</button>
-			<button onClick={testFunc3}>Deal Me a Card</button>
+		<div className='App'>
+			<Board />
 		</div>
 	);
 }

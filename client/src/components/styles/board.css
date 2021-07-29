@@ -1,0 +1,38 @@
+.board_wrapper {
+	background-color: green;
+	text-align: center;
+	height: 800px;
+	display: flex;
+	flex-direction: column;
+}
+
+.deck_wrapper {
+	background-color: pink;
+	flex: 2;
+}
+
+.board_activecard {
+	background-color: blue;
+	flex: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.deck_middle_wrapper {
+	display: flex;
+}
+
+.deck_displayed {
+	background-color: hotpink;
+	margin-right: 30px;
+}
+
+.deck_activecard {
+	background-color: brown;
+}
+
+.card {
+	height: 200px;
+	width: 160px;
+}
