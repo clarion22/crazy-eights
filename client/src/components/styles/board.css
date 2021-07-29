@@ -24,8 +24,10 @@
 }
 
 #deck_displayed {
-	background-color: hotpink;
 	margin-right: 30px;
+	background-image: url('../../assets/cardback.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 #deck_activecard {
