@@ -55,9 +55,7 @@ const gameReducer = (state = initialState, action) => {
 		case PLAY_CARD:
 			let playedCard = action.payload;
 			let playerCards = Object.values(state.player);
-			playerCards.forEach((card) => {
-				console.log(card.name === playedCard.name, card);
-			});
+
 			let cards = playerCards.filter((card) => {
 				if (
 					card.name !== playedCard.name &&
@@ -92,7 +90,22 @@ const gameReducer = (state = initialState, action) => {
 			} else {
 				let playedCard = possibleCards[0];
 				opponentCards.forEach((card) => {
-					console.log(card.name === playedCard.name, card);
+					console.log(
+						card.name !== playedCard.name &&
+							card.type !== playedCard.type &&
+							card.value !== playedCard.value
+					);
+					console.log(
+						'name',
+						card.name !== playedCard.name,
+						typeof card.name
+					);
+					console.log('type', card.type !== playedCard.type);
+					console.log(
+						'value',
+						Number(card.value) !== Number(card.value)
+					);
+					console.log(card, playedCard);
 				});
 				let cards = opponentCards.filter((card) => {
 					if (
@@ -105,8 +118,8 @@ const gameReducer = (state = initialState, action) => {
 				});
 				state.opponent = cards;
 				state.activeCard = playedCard;
-				return state;
 			}
+			return state;
 		default:
 			return state;
 	}
