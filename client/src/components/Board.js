@@ -29,6 +29,7 @@ function Board() {
 
 	const giveCard = () => {
 		dispatch(dealCard());
+		//
 	};
 
 	const selectCard = (card) => {
@@ -46,7 +47,9 @@ function Board() {
 		}
 	};
 
-	useEffect(() => {}, [player, opponent]);
+	useEffect(() => {
+		console.log('player', player);
+	}, [player.length]);
 
 	return (
 		<div className='board_wrapper'>

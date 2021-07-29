@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import './styles/board.css';
 
 function Card({ card, selectCard, selected }) {
+	if (!card) return null;
 	const updateCard = (card) => {
 		selectCard(card);
 	};
 
-	useEffect(() => {
-		console.log(selected, 'selected');
-	}, []);
 	return (
 		<div
 			className={selected ? 'card--selected' : 'card'}
