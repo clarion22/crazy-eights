@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { dealDeck, dealCard } from '../store/game';
+import { dealDeck, dealCard, playCard, opponentPlay } from '../store/game';
+import { validMove, movesLeft } from '../util/deck_logic';
 import Card from './Card';
 import _ from 'lodash';
 import './styles/board.css';
@@ -36,7 +37,16 @@ function Board() {
 		console.log('currentCard', selectedCard.current);
 	};
 
-	useEffect(() => {}, []);
+	const makeMove = (card) => {
+		if (validMove(card, activeCard)) {
+			dispatch(playCard(card));
+			setTimeout(() => dispatch(opponentPlay()), 1000);
+		} else {
+			console.log('not a valid move');
+		}
+	};
+
+	useEffect(() => {}, [player, opponent]);
 
 	return (
 		<div className='board_wrapper'>
@@ -59,6 +69,9 @@ function Board() {
 					<div>
 						<button onClick={beginGame}>Start Game</button>
 						<button onClick={giveCard}>Deal Card</button>
+						<button onClick={() => makeMove(selectedCard.current)}>
+							Play
+						</button>
 					</div>
 					<div id='deck_displayed' className='card'>
 						DECK
