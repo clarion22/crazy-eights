@@ -1,5 +1,5 @@
 export const generateUnicode = (card) => {
-	let unicode = [0, 0, "'"];
+	let unicode = ['', '', "'"];
 	if (card) {
 		switch (card.type) {
 			case 'Spades':

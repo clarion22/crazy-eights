@@ -3,36 +3,35 @@ import './styles/board.css';
 import styled from 'styled-components';
 import { generateUnicode } from '../util/card_logic';
 
-function Card({ card, selectCard, selected }) {
+function Card({ card, selectCard, selected, gameSession }) {
 	if (!card) return null;
 
-	// let unicode = ;
-	// console.log(unicode, 'unicode');
 	const CardDiv = styled.div`
 		height: 200px;
-		width: 160px;
-		background-color: yellow;
+		padding-top: 10px;
+		background-color: white;
+		width: 148px;
 		margin: 10px 10px;
 		&:after {
 			content: ${generateUnicode(card)};
-			font-size: 250px;
-			line-height: 0.6;
+			font-size: 14.5em;
+			line-height: 0.7;
 		}
 		&:hover {
 			height: 200px;
-			width: 160px;
 			background-color: lightgreen;
 			margin: 10px 10px;
 		}
 	`;
-
-	return (
-		<CardDiv onClick={() => selectCard(card)}>
-			<div>{card.name}</div>
-			<div>{card.type}</div>
-			<div>{card.value}</div>
-		</CardDiv>
-	);
+	if (gameSession) {
+		return (
+			<div style={{ width: '100px' }} onClick={() => selectCard(card)}>
+				<CardDiv></CardDiv>
+			</div>
+		);
+	} else {
+		return <div></div>;
+	}
 }
 
 export default Card;
