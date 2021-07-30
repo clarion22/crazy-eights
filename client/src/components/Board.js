@@ -94,6 +94,7 @@ function Board() {
 						DECK
 					</div>
 					<Card card={activeCard} />
+					<p className='ace'></p>
 				</div>
 			</div>
 			<div className='deck_wrapper'>

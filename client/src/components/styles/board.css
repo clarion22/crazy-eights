@@ -65,3 +65,15 @@
 	background-color: aliceblue;
 	margin: 10px 10px;
 }
+
+.card--selected::after {
+	content: '\1f0ba';
+	font-size: 250px;
+	line-height: 0.6;
+}
+
+.card::after {
+	content: '\1f0ba';
+	font-size: 250px;
+	line-height: 0.6;
+}
