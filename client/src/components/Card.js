@@ -36,7 +36,7 @@ function Card({ card, selectCard, selected, gameSession, player, activeCard }) {
 				: 'black'};
 		}
 		&:hover {
-			${selected ? '' : hoverMixin}
+			${selected || activeCard ? '' : hoverMixin}
 		}
 	`;
 	if (gameSession && player) {
