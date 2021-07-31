@@ -76,6 +76,8 @@ function Board() {
 								selectCard={selectCard}
 								selected={false}
 								gameSession={gameSession}
+								player={false}
+								activeCard={false}
 							/>
 						);
 					})}
@@ -91,10 +93,13 @@ function Board() {
 							Play
 						</button>
 					</div>
-					<div id='deck_displayed' className='card'>
-						DECK
-					</div>
-					<Card card={activeCard} gameSession={gameSession} />
+					<div id='deck_displayed'></div>
+					<Card
+						card={activeCard}
+						gameSession={gameSession}
+						player={false}
+						activeCard={true}
+					/>
 					<p className='ace'></p>
 				</div>
 			</div>
@@ -108,6 +113,8 @@ function Board() {
 								selectCard={selectCard}
 								selected={_.isEqual(card, chosenCard)}
 								gameSession={gameSession}
+								player={true}
+								activeCard={false}
 							/>
 						);
 					})}

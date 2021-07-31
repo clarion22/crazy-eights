@@ -12,21 +12,18 @@ const bounce = keyframes`
 
 const hoverMixin = css`
 	height: 200px;
-	background: #f3e5a0;
-	background: -webkit-linear-gradient(top left, #f3e5a0, #c5d8c2);
-	background: -moz-linear-gradient(top left, #f3e5a0, #c5d8c2);
-	background: linear-gradient(to bottom right, #f3e5a0, #c5d8c2);
+	background: #e4e4e4;
 	animation: ${bounce} 1s linear infinite;
 	margin: 0;
 `;
 
-function Card({ card, selectCard, selected, gameSession }) {
+function Card({ card, selectCard, selected, gameSession, player, activeCard }) {
 	if (!card) return null;
 
 	const CardDiv = styled.div`
 		height: 200px;
 		padding-top: 10px;
-		background-color: ${selected ? '#b7efd6' : 'white'};
+		background-color: ${selected ? '#e4e4e4' : 'white'};
 		width: 148px;
 		margin: 10px 10px;
 		transform: ${selected ? 'translateY(-20px)' : ''};
@@ -42,14 +39,26 @@ function Card({ card, selectCard, selected, gameSession }) {
 			${selected ? '' : hoverMixin}
 		}
 	`;
-	if (gameSession) {
+	if (gameSession && player) {
 		return (
 			<div style={{ width: '100px' }} onClick={() => selectCard(card)}>
 				<CardDiv></CardDiv>
 			</div>
 		);
+	} else if (gameSession && !player && !activeCard) {
+		return (
+			<div style={{ width: '100px' }}>
+				<div className='card'></div>
+			</div>
+		);
+	} else if (gameSession && activeCard) {
+		return (
+			<div style={{ width: '100px' }}>
+				<CardDiv></CardDiv>
+			</div>
+		);
 	} else {
-		return <div></div>;
+		return <></>;
 	}
 }
 
