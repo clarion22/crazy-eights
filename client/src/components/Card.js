@@ -54,10 +54,7 @@ function Card({
 
 	if (gameSession && player) {
 		return (
-			<div
-				style={{ width: '100px', position: 'relative' }}
-				onClick={() => selectCard(card)}
-			>
+			<div style={{ width: '100px' }} onClick={() => selectCard(card)}>
 				{card.value === 8 && selected ? (
 					<div className='card_typepicker'>
 						<span onClick={() => setType('Spades')}>♠</span>

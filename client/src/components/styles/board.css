@@ -84,7 +84,7 @@
 	height: 40px;
 	width: 100px;
 	background-color: white;
-	position: absolute;
+	position: relative;
 	top: -25%;
 	left: 25%;
 	z-index: 1;

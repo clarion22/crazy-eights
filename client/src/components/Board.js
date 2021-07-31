@@ -39,12 +39,13 @@ function Board() {
 
 	const makeMove = (card) => {
 		if (validMove(card, activeCard)) {
-			if (card.value === 8 && type === '') {
-				setType(card.type);
-			}
 			dispatch(playCard(card));
 			setTimeout(() => {
-				dispatch(opponentPlay(type));
+				dispatch(
+					opponentPlay(
+						card.value === 8 && type.length === 0 ? card.type : type
+					)
+				);
 				setTotalMoves((prev) => prev + 1);
 			}, 1000);
 			setType('');
