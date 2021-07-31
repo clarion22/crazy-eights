@@ -16,6 +16,7 @@ function Board() {
 	const [gameSession, setGameSession] = useState(false);
 	const [chosenCard, setChosenCard] = useState({});
 	const [totalMoves, setTotalMoves] = useState(0);
+	const [type, setType] = useState('');
 	const [winner, setWinner] = useState(false);
 
 	const selectedCard = useRef({ name: '', value: 0, type: '' });
@@ -38,11 +39,15 @@ function Board() {
 
 	const makeMove = (card) => {
 		if (validMove(card, activeCard)) {
+			if (card.value === 8 && type === '') {
+				setType(card.type);
+			}
 			dispatch(playCard(card));
 			setTimeout(() => {
-				dispatch(opponentPlay());
+				dispatch(opponentPlay(type));
 				setTotalMoves((prev) => prev + 1);
 			}, 1000);
+			setType('');
 		} else {
 			console.log('not a valid move');
 		}
@@ -93,6 +98,7 @@ function Board() {
 							Play
 						</button>
 					</div>
+					<div>YOU CHOSE TYPE: {type} </div>
 					<div id='deck_displayed'></div>
 					<Card
 						card={activeCard}
@@ -115,6 +121,7 @@ function Board() {
 								gameSession={gameSession}
 								player={true}
 								activeCard={false}
+								setType={setType}
 							/>
 						);
 					})}

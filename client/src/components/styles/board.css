@@ -79,3 +79,22 @@
 	font-size: 250px;
 	line-height: 0.6;
 }
+
+.card_typepicker {
+	height: 40px;
+	width: 100px;
+	background-color: white;
+	position: absolute;
+	top: -25%;
+	left: 25%;
+	z-index: 1;
+}
+
+.card_typepicker span {
+	font-size: 2rem;
+}
+
+.card_typepicker span:hover {
+	color: red;
+	cursor: pointer;
+}

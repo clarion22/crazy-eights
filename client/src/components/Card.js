@@ -15,9 +15,18 @@ const hoverMixin = css`
 	background: #e4e4e4;
 	animation: ${bounce} 1s linear infinite;
 	margin: 0;
+	cursor: pointer;
 `;
 
-function Card({ card, selectCard, selected, gameSession, player, activeCard }) {
+function Card({
+	card,
+	selectCard,
+	selected,
+	gameSession,
+	player,
+	activeCard,
+	setType,
+}) {
 	if (!card) return null;
 
 	const CardDiv = styled.div`
@@ -38,10 +47,27 @@ function Card({ card, selectCard, selected, gameSession, player, activeCard }) {
 		&:hover {
 			${selected || activeCard ? '' : hoverMixin}
 		}
+		&:active {
+			background-color: red;
+		}
 	`;
+
 	if (gameSession && player) {
 		return (
-			<div style={{ width: '100px' }} onClick={() => selectCard(card)}>
+			<div
+				style={{ width: '100px', position: 'relative' }}
+				onClick={() => selectCard(card)}
+			>
+				{card.value === 8 && selected ? (
+					<div className='card_typepicker'>
+						<span onClick={() => setType('Spades')}>♠</span>
+						<span onClick={() => setType('Diamonds')}>♦</span>
+						<span onClick={() => setType('Hearts')}>♥</span>
+						<span onClick={() => setType('Clubs')}>♣</span>
+					</div>
+				) : (
+					''
+				)}
 				<CardDiv></CardDiv>
 			</div>
 		);

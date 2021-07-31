@@ -25,9 +25,10 @@ export const dealCard = () => {
 	};
 };
 
-export const opponentPlay = () => {
+export const opponentPlay = (payload) => {
 	return {
 		type: OPPONENT_PLAY,
+		payload,
 	};
 };
 
@@ -82,14 +83,25 @@ const gameReducer = (state = initialState, action) => {
 			let activeCard = state.activeCard;
 			let newCards = [];
 			let opponentChosenCard;
-			let possibleCards = opponentCards.filter((card) => {
-				if (
-					card.type === activeCard.type ||
-					card.value === activeCard.value
-				) {
-					return card;
-				}
-			});
+			let possibleCards;
+			if (activeCard.value !== 8) {
+				possibleCards = opponentCards.filter((card) => {
+					if (
+						card.type === activeCard.type ||
+						card.value === activeCard.value
+					) {
+						return card;
+					}
+				});
+			} else if (activeCard.value === 8) {
+				let type = action.payload;
+				possibleCards = opponentCards.filter((card) => {
+					if (card.type === type) {
+						return card;
+					}
+				});
+			}
+
 			if (possibleCards.length === 0) {
 				let card = state.deck[0];
 				let deckToUpdate = state.deck;
