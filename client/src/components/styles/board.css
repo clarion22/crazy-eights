@@ -50,15 +50,10 @@
 .card {
 	height: 200px;
 	width: 160px;
-	background-color: yellow;
+	background-image: url('../../assets/cardback.jpg');
 	margin: 10px 10px;
-}
-
-.card:hover {
-	height: 200px;
-	width: 160px;
-	background-color: lightgreen;
-	margin: 10px 10px;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 .deck_wrapper {
@@ -80,12 +75,6 @@
 }
 
 .card--selected::after {
-	content: '\1f0ba';
-	font-size: 250px;
-	line-height: 0.6;
-}
-
-.card::after {
 	content: '\1f0ba';
 	font-size: 250px;
 	line-height: 0.6;
