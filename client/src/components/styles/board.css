@@ -126,13 +126,13 @@
 }
 
 .board_btn {
-	box-shadow: inset 0px 1px 0px 0px #f29c93;
-	background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
-	background-color: #fe1a00;
-	border-radius: 6px;
-	border: 1px solid #d83526;
+	box-shadow: 0px 1px 0px 0px #fff6af;
+	background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	background-color: #ffec64;
+	border-radius: 5px;
+	border: 1px solid #ffaa22;
 	cursor: pointer;
-	color: #ffffff;
+	color: #333333;
 	font-weight: bold;
 	font-size: 15px;
 	padding: 16px 50px;
@@ -140,8 +140,8 @@
 }
 
 .board_btn:hover {
-	background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
-	background-color: #ce0100;
+	background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color: #ffab23;
 }
 
 .board_btn:active {

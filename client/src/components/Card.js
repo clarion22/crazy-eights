@@ -42,7 +42,7 @@ const gradientAnimation = css`
 	text-fill-color: transparent;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	animation: shine 1s linear infinite;
+	animation: shine 1.5s linear infinite;
 `;
 
 function Card({
