@@ -53,7 +53,7 @@ function Board() {
 			setType('');
 		} else {
 			setisValidMove(true);
-			setTimeout(() => setisValidMove(false), 2000);
+			setTimeout(() => setisValidMove(false), 3000);
 		}
 	};
 
@@ -101,25 +101,38 @@ function Board() {
 			<div className='board_activecard'>
 				<div className='deck_middle_wrapper'>
 					<div>
-						<div>Congrats you won!!!</div>
+						<div>{message}</div>
 						{gameSession ? (
 							<>
-								<button onClick={giveCard}>Draw Card</button>
 								<button
+									className='board_btn'
+									onClick={giveCard}
+								>
+									Draw Card
+								</button>
+								<button
+									className='board_btn'
 									onClick={() =>
 										makeMove(selectedCard.current)
 									}
 								>
 									Play Card
 								</button>
-								<button>Restart</button>
 							</>
 						) : (
-							<button onClick={beginGame}>Start Game</button>
+							<button className='board_btn' onClick={beginGame}>
+								Start Game
+							</button>
 						)}
-						<div>YOU CHOSE TYPE: {type} </div>
+						{/* <div>YOU CHOSE TYPE: {type} </div> */}
+						{isValidMove ? (
+							<div className='board_heading'>
+								<span>NOT A VALID MOVE</span>
+							</div>
+						) : (
+							''
+						)}
 					</div>
-					{isValidMove ? <div>NOT A VALID MOVE</div> : ''}
 					<div id='deck_displayed'></div>
 					<Card
 						card={activeCard}
