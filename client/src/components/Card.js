@@ -11,16 +11,8 @@ const bounce = keyframes`
 `;
 
 const shine = keyframes`
-  0% {
-		background-position: 0 50%;
-	}
-
-	50% {
-		background-position: 100% 50%;
-	}
-
-	100% {
-		background-position: 0 50%;
+	to {
+		background-position: 200% center;
 	}
 `;
 
@@ -35,21 +27,21 @@ const hoverMixin = css`
 `;
 
 const gradientAnimation = css`
+	text-align: center;
+
 	background: linear-gradient(
 		to right,
 		#fff 20%,
-		#ff0 40%,
-		#ff0 60%,
+		#fb00ff 40%,
+		#00ffdc 60%,
 		#fff 80%
 	);
 	background-size: 200% auto;
-
 	color: #000;
 	background-clip: text;
 	text-fill-color: transparent;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-
 	animation: shine 1s linear infinite;
 `;
 
@@ -67,7 +59,7 @@ function Card({
 	const CardDiv = styled.div`
 		height: 200px;
 		padding-top: 10px;
-		background-color: ${selected ? '#e4e4e4' : 'white'};
+		background-color: ${selected ? 'black' : 'white'};
 		width: 148px;
 		margin: 10px 10px;
 		transform: ${selected ? 'translateY(-20px)' : ''};
@@ -75,9 +67,13 @@ function Card({
 			content: ${generateUnicode(card)};
 			font-size: 14.5em;
 			line-height: 0.7;
-			color: ${card.type === 'Diamonds' || card.type === 'Hearts'
-				? 'red'
-				: 'black'};
+			${selected
+				? gradientAnimation
+				: `color: ${
+						card.type === 'Diamonds' || card.type === 'Hearts'
+							? 'red'
+							: 'black'
+				  }`}
 		}
 		&:hover {
 			${selected || activeCard ? '' : hoverMixin}

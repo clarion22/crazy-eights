@@ -100,8 +100,6 @@
 }
 
 .test::after {
-	font-size: 18rem;
-	content: '\1f0a8';
 	text-align: center;
 
 	background: linear-gradient(
@@ -173,4 +171,8 @@
 	to {
 		transform: scale(1);
 	}
+}
+
+.hidden {
+	display: none;
 }

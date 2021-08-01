@@ -133,7 +133,10 @@ function Board() {
 							''
 						)}
 					</div>
-					<div id='deck_displayed'></div>
+					<div
+						id='deck_displayed'
+						className={deck.length || !gameSession ? '' : 'hidden'}
+					></div>
 					<Card
 						card={activeCard}
 						gameSession={gameSession}
