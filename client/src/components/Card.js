@@ -10,12 +10,47 @@ const bounce = keyframes`
 	100% { transform: translateY(0); }
 `;
 
+const shine = keyframes`
+  0% {
+		background-position: 0 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0 50%;
+	}
+`;
+
 const hoverMixin = css`
 	height: 200px;
 	background: #e4e4e4;
 	animation: ${bounce} 1s linear infinite;
 	margin: 0;
 	cursor: pointer;
+	-webkit-box-shadow: 14px 15px 15px -2px rgba(0, 0, 0, 0.66);
+	box-shadow: 14px 15px 15px -2px rgba(0, 0, 0, 0.66);
+`;
+
+const gradientAnimation = css`
+	background: linear-gradient(
+		to right,
+		#fff 20%,
+		#ff0 40%,
+		#ff0 60%,
+		#fff 80%
+	);
+	background-size: 200% auto;
+
+	color: #000;
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	animation: shine 1s linear infinite;
 `;
 
 function Card({
@@ -48,7 +83,7 @@ function Card({
 			${selected || activeCard ? '' : hoverMixin}
 		}
 		&:active {
-			background-color: red;
+			background-color: pink;
 		}
 	`;
 

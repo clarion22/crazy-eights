@@ -18,6 +18,8 @@ function Board() {
 	const [totalMoves, setTotalMoves] = useState(0);
 	const [type, setType] = useState('');
 	const [winner, setWinner] = useState(false);
+	const [message, setMessage] = useState('');
+	const [isValidMove, setisValidMove] = useState(false);
 
 	const selectedCard = useRef({ name: '', value: 0, type: '' });
 
@@ -50,7 +52,8 @@ function Board() {
 			}, 1000);
 			setType('');
 		} else {
-			console.log('not a valid move');
+			setisValidMove(true);
+			setTimeout(() => setisValidMove(false), 2000);
 		}
 	};
 
@@ -58,9 +61,15 @@ function Board() {
 		if (gameSession) {
 			if (player.length === 0) {
 				setWinner(true);
+				setMessage('CONGRATS YOU WON THE GAME');
 			}
 			if (deck.length === 0) {
 				setWinner(true);
+				setMessage('SORRY ITS A TIE');
+			}
+			if (opponent.length === 0) {
+				setWinner(true);
+				setMessage('YOU LOSE');
 			}
 		}
 	};
@@ -92,14 +101,25 @@ function Board() {
 			<div className='board_activecard'>
 				<div className='deck_middle_wrapper'>
 					<div>
-						{winner ? <div>Congrats you won!!!</div> : ''}
-						<button onClick={beginGame}>Start Game</button>
-						<button onClick={giveCard}>Deal Card</button>
-						<button onClick={() => makeMove(selectedCard.current)}>
-							Play
-						</button>
+						<div>Congrats you won!!!</div>
+						{gameSession ? (
+							<>
+								<button onClick={giveCard}>Draw Card</button>
+								<button
+									onClick={() =>
+										makeMove(selectedCard.current)
+									}
+								>
+									Play Card
+								</button>
+								<button>Restart</button>
+							</>
+						) : (
+							<button onClick={beginGame}>Start Game</button>
+						)}
+						<div>YOU CHOSE TYPE: {type} </div>
 					</div>
-					<div>YOU CHOSE TYPE: {type} </div>
+					{isValidMove ? <div>NOT A VALID MOVE</div> : ''}
 					<div id='deck_displayed'></div>
 					<Card
 						card={activeCard}
