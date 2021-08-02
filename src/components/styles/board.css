@@ -17,7 +17,7 @@
 	);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2eaa4d",endColorstr="#135d00",GradientType=1);
 	text-align: center;
-	height: 800px;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
