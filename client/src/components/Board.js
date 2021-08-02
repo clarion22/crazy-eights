@@ -74,6 +74,10 @@ function Board() {
 		}
 	};
 
+	const restartGame = () => {
+		//
+	};
+
 	useEffect(() => {
 		console.log('player', player);
 		checkWin();
@@ -100,8 +104,7 @@ function Board() {
 			</div>
 			<div className='board_activecard'>
 				<div className='deck_middle_wrapper'>
-					<div>
-						<div>{message}</div>
+					<div className='board_btnwrapper'>
 						{gameSession ? (
 							<>
 								<button
@@ -118,16 +121,31 @@ function Board() {
 								>
 									Play Card
 								</button>
+								<div id='restart_btn'>
+									<button
+										className='board_btn'
+										onClick={restartGame}
+									>
+										Restart
+									</button>
+								</div>
 							</>
 						) : (
 							<button className='board_btn' onClick={beginGame}>
 								Start Game
 							</button>
 						)}
-						{/* <div>YOU CHOSE TYPE: {type} </div> */}
 						{isValidMove ? (
 							<div className='board_heading'>
 								<span>NOT A VALID MOVE</span>
+							</div>
+						) : (
+							''
+						)}
+						<div className='board_message'>{message}</div>
+						{type ? (
+							<div className='board_message--type'>
+								YOU CHOSE TYPE: {type}{' '}
 							</div>
 						) : (
 							''
