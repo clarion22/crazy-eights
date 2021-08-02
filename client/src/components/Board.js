@@ -50,6 +50,7 @@ function Board() {
 				);
 				setTotalMoves((prev) => prev + 1);
 			}, 1000);
+			selectedCard.current = '';
 			setType('');
 		} else {
 			setisValidMove(true);
@@ -75,7 +76,10 @@ function Board() {
 	};
 
 	const restartGame = () => {
-		//
+		setTotalMoves(0);
+		setMessage('');
+		setWinner(false);
+		dispatch(dealDeck());
 	};
 
 	useEffect(() => {
