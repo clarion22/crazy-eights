@@ -54,6 +54,7 @@ export const validMove = (card, activeCard) => {
 };
 
 export const movesLeft = (hand, activeCard) => {
+	if (!hand.length || !activeCard) return false;
 	let movesLeft = false;
 	hand.forEach((card) => {
 		if (card.value === activeCard.value || card.type === activeCard.type) {

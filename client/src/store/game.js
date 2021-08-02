@@ -25,9 +25,10 @@ export const dealCard = () => {
 	};
 };
 
-export const opponentPlay = () => {
+export const opponentPlay = (payload) => {
 	return {
 		type: OPPONENT_PLAY,
+		payload,
 	};
 };
 
@@ -41,18 +42,25 @@ const initialState = {
 const gameReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case DEAL_DECK:
+			let playerArr = [];
+			let opponentArr = [];
 			const deck = generateDeck();
 			for (let i = 0; i < 8; i++) {
-				state.player.push(deck[i]);
+				playerArr.push(deck[i]);
 			}
 			for (let i = 8; i < 16; i++) {
-				state.opponent.push(deck[i]);
+				opponentArr.push(deck[i]);
 			}
 			deck.splice(0, 16);
-			state.activeCard = deck[0];
+			let activeCard1 = deck[0];
 			deck.shift();
-			state.deck = deck;
-			return state;
+			return {
+				...state,
+				deck: deck,
+				activeCard: activeCard1,
+				player: playerArr,
+				opponent: opponentArr,
+			};
 		case PLAY_CARD:
 			let playedCard = action.payload;
 			let playerCards = Object.values(state.player);
@@ -62,41 +70,62 @@ const gameReducer = (state = initialState, action) => {
 					return card;
 				}
 			});
-			state.player = cards;
-			state.activeCard = playedCard;
-			return state;
+			return { ...state, player: cards, activeCard: playedCard };
 		case DEAL_CARD:
 			let card = state.deck[0];
-			state.deck.shift();
-			state.player.push(card);
-			return state;
+			const updatedDeck = state.deck;
+			updatedDeck.shift();
+			let updatedPlayerArr = state.player;
+			updatedPlayerArr.push(card);
+			return { ...state, deck: updatedDeck, player: updatedPlayerArr };
 		case OPPONENT_PLAY:
 			let opponentCards = state.opponent;
 			let activeCard = state.activeCard;
-			let possibleCards = opponentCards.filter((card) => {
-				if (
-					card.type === activeCard.type ||
-					card.value === activeCard.value
-				) {
-					return card;
-				}
-			});
-			console.log('POSSIBLE CARDS', possibleCards);
-			if (possibleCards.length === 0) {
-				let card = state.deck[0];
-				state.deck.shift();
-				state.opponent.push(card);
-			} else {
-				let playedCard = possibleCards[0];
-				let cards = opponentCards.filter((card) => {
-					if (!_.isEqual(card, playedCard)) {
+			let newCards = [];
+			let opponentChosenCard;
+			let possibleCards;
+			if (activeCard.value !== 8) {
+				possibleCards = opponentCards.filter((card) => {
+					if (
+						card.type === activeCard.type ||
+						card.value === activeCard.value
+					) {
 						return card;
 					}
 				});
-				state.opponent = cards;
-				state.activeCard = playedCard;
+			} else if (activeCard.value === 8) {
+				let type = action.payload;
+				possibleCards = opponentCards.filter((card) => {
+					if (card.type === type) {
+						return card;
+					}
+				});
 			}
-			return state;
+
+			if (possibleCards.length === 0) {
+				let card = state.deck[0];
+				let deckToUpdate = state.deck;
+				deckToUpdate.shift();
+				let opponentArrToUpdate = state.opponent;
+				opponentArrToUpdate.push(card);
+				return {
+					...state,
+					deck: deckToUpdate,
+					opponent: opponentArrToUpdate,
+				};
+			} else {
+				opponentChosenCard = possibleCards[0];
+				newCards = opponentCards.filter((card) => {
+					if (!_.isEqual(card, opponentChosenCard)) {
+						return card;
+					}
+				});
+			}
+			return {
+				...state,
+				activeCard: opponentChosenCard,
+				opponent: newCards,
+			};
 		default:
 			return state;
 	}
