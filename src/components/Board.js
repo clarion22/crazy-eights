@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dealDeck, dealCard, playCard, opponentPlay } from '../store/game';
 import { validMove, movesLeft } from '../util/deck_logic';
+import Instruction from './Instruction';
 import Card from './Card';
 import _ from 'lodash';
 import './styles/board.css';
@@ -66,7 +67,7 @@ function Board() {
 			}
 			if (deck.length === 0) {
 				setWinner(true);
-				setMessage('SORRY ITS A TIE');
+				setMessage('SORRY THE DECK IS');
 			}
 			if (opponent.length === 0) {
 				setWinner(true);
@@ -186,6 +187,7 @@ function Board() {
 					})}
 				</div>
 			</div>
+			<Instruction />
 		</div>
 	);
 }
