@@ -15,7 +15,7 @@ function App() {
 		<BrowserRouter>
 			<Navbar />
 			<Switch>
-				<Route path='/' exact={true}>
+				<Route path='/crazy-eights' exact={true}>
 					<div className='App'>
 						<Board />
 					</div>
