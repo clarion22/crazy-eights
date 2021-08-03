@@ -1,3 +1,13 @@
+### Crazy Eights
+Object of the game
+The goal is to be the first player to get rid of all the cards in your hand
+
+1. You can play any card of the same suit or rank
+2. Select a card and press play to make a move
+3. Click draw card if you don't have a card to play
+4. If you choose an 8, you can set the next suit of the opponent
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
