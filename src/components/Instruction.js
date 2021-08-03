@@ -1,15 +1,21 @@
 import React from 'react';
 import vid from '../assets/croppedcrazyeights.mp4';
+import dice from '../assets/dice2.jpg';
+import './styles/board.css';
+import Navbar from './Navbar';
 
 function Instruction() {
 	return (
 		<div>
-			<div>
+			<div className='main_wrapper'>
+				<span>Crazy Eights</span>
+			</div>
+			<div className='main_cotainer--rules'>
 				<h1>Rules of Crazy Eights</h1>
 				<h2>Object of the game</h2>
 				<span>
 					The goal is to be the first player to get rid of all the
-					cads in your hand
+					cards in your hand
 				</span>
 				<ol type='1'>
 					<li>You can play any card of the same suit or rank</li>

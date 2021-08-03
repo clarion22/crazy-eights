@@ -1,0 +1,13 @@
+.navbar {
+	height: 70px;
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+}
+
+.navbar--home {
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 2rem;
+	color: white;
+}

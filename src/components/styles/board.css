@@ -182,3 +182,20 @@
 	bottom: 0;
 	width: 100%;
 }
+
+.main_wrapper {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+}
+
+.main_wrapper:first-child {
+	color: white;
+	font: 'Helvetica';
+	font-size: 5rem;
+	text-decoration: underline;
+}
+
+.main_container--rules {
+	color: white;
+}

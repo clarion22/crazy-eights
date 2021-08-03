@@ -88,6 +88,10 @@ function Board() {
 		checkWin();
 	}, [totalMoves]);
 
+	useEffect(() => {
+		beginGame();
+	}, []);
+
 	return (
 		<div className='board_wrapper'>
 			<div className='deck_wrapper'>
@@ -110,36 +114,21 @@ function Board() {
 			<div className='board_activecard'>
 				<div className='deck_middle_wrapper'>
 					<div className='board_btnwrapper'>
-						{gameSession ? (
-							<>
-								<button
-									className='board_btn'
-									onClick={giveCard}
-								>
-									Draw Card
-								</button>
-								<button
-									className='board_btn'
-									onClick={() =>
-										makeMove(selectedCard.current)
-									}
-								>
-									Play Card
-								</button>
-								<div id='restart_btn'>
-									<button
-										className='board_btn'
-										onClick={restartGame}
-									>
-										Restart
-									</button>
-								</div>
-							</>
-						) : (
-							<button className='board_btn' onClick={beginGame}>
-								Start Game
+						<button className='board_btn' onClick={giveCard}>
+							Draw Card
+						</button>
+						<button
+							className='board_btn'
+							onClick={() => makeMove(selectedCard.current)}
+						>
+							Play Card
+						</button>
+						<div id='restart_btn'>
+							<button className='board_btn' onClick={restartGame}>
+								Restart
 							</button>
-						)}
+						</div>
+
 						{isValidMove ? (
 							<div className='board_heading'>
 								<span>NOT A VALID MOVE</span>
@@ -187,7 +176,7 @@ function Board() {
 					})}
 				</div>
 			</div>
-			<Instruction />
+			{/* <Instruction /> */}
 		</div>
 	);
 }
