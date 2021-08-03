@@ -1,23 +1,5 @@
 .board_wrapper {
-	background: rgb(46, 170, 77);
-	background: -moz-linear-gradient(
-		0deg,
-		rgba(46, 170, 77, 1) 16%,
-		rgba(19, 93, 0, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		0deg,
-		rgba(46, 170, 77, 1) 16%,
-		rgba(19, 93, 0, 1) 100%
-	);
-	background: linear-gradient(
-		0deg,
-		rgba(46, 170, 77, 1) 16%,
-		rgba(19, 93, 0, 1) 100%
-	);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2eaa4d",endColorstr="#135d00",GradientType=1);
 	text-align: center;
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
@@ -199,4 +181,21 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+}
+
+.main_wrapper {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+}
+
+.main_wrapper:first-child {
+	color: white;
+	font: 'Helvetica';
+	font-size: 5rem;
+	text-decoration: underline;
+}
+
+.main_container--rules {
+	color: white;
 }

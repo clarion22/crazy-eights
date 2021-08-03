@@ -28,7 +28,6 @@ const hoverMixin = css`
 
 const gradientAnimation = css`
 	text-align: center;
-
 	background: linear-gradient(
 		to right,
 		#fff 20%,

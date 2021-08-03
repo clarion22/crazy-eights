@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dealDeck, dealCard, playCard, opponentPlay } from '../store/game';
 import { validMove, movesLeft } from '../util/deck_logic';
+import Instruction from './Instruction';
 import Card from './Card';
 import _ from 'lodash';
 import './styles/board.css';
@@ -66,7 +67,7 @@ function Board() {
 			}
 			if (deck.length === 0) {
 				setWinner(true);
-				setMessage('SORRY ITS A TIE');
+				setMessage('SORRY THE DECK IS');
 			}
 			if (opponent.length === 0) {
 				setWinner(true);
@@ -86,6 +87,10 @@ function Board() {
 		console.log('player', player);
 		checkWin();
 	}, [totalMoves]);
+
+	useEffect(() => {
+		beginGame();
+	}, []);
 
 	return (
 		<div className='board_wrapper'>
@@ -109,36 +114,21 @@ function Board() {
 			<div className='board_activecard'>
 				<div className='deck_middle_wrapper'>
 					<div className='board_btnwrapper'>
-						{gameSession ? (
-							<>
-								<button
-									className='board_btn'
-									onClick={giveCard}
-								>
-									Draw Card
-								</button>
-								<button
-									className='board_btn'
-									onClick={() =>
-										makeMove(selectedCard.current)
-									}
-								>
-									Play Card
-								</button>
-								<div id='restart_btn'>
-									<button
-										className='board_btn'
-										onClick={restartGame}
-									>
-										Restart
-									</button>
-								</div>
-							</>
-						) : (
-							<button className='board_btn' onClick={beginGame}>
-								Start Game
+						<button className='board_btn' onClick={giveCard}>
+							Draw Card
+						</button>
+						<button
+							className='board_btn'
+							onClick={() => makeMove(selectedCard.current)}
+						>
+							Play Card
+						</button>
+						<div id='restart_btn'>
+							<button className='board_btn' onClick={restartGame}>
+								Restart
 							</button>
-						)}
+						</div>
+
 						{isValidMove ? (
 							<div className='board_heading'>
 								<span>NOT A VALID MOVE</span>
@@ -186,6 +176,7 @@ function Board() {
 					})}
 				</div>
 			</div>
+			{/* <Instruction /> */}
 		</div>
 	);
 }
