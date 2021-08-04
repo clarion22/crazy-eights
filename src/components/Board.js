@@ -2,10 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dealDeck, dealCard, playCard, opponentPlay } from '../store/game';
 import { validMove, movesLeft } from '../util/deck_logic';
-import Instruction from './Instruction';
+import { NavLink } from 'react-router-dom';
 import Card from './Card';
 import _ from 'lodash';
 import './styles/board.css';
+import NavBar from './Navbar';
 
 function Board() {
 	const dispatch = useDispatch();
@@ -91,91 +92,98 @@ function Board() {
 	}, []);
 
 	return (
-		<div className='board_wrapper'>
-			<div className='deck_wrapper'>
-				<div className='deck_content_wrapper'>
-					{opponent.map((card, index) => {
-						return (
-							<Card
-								key={index}
-								card={card}
-								selectCard={selectCard}
-								selected={false}
-								gameSession={gameSession}
-								player={false}
-								activeCard={false}
-							/>
-						);
-					})}
-				</div>
-			</div>
-			<div className='board_activecard'>
-				<div className='deck_middle_wrapper'>
-					<div className='board_btnwrapper'>
-						<button className='board_btn' onClick={giveCard}>
-							Draw Card
-						</button>
-						<button
-							className='board_btn'
-							onClick={() => makeMove(selectedCard.current)}
-						>
-							Play Card
-						</button>
-						<div id='restart_btn'>
-							<button className='board_btn' onClick={restartGame}>
-								Restart
-							</button>
-						</div>
-
-						{isValidMove ? (
-							<div className='board_heading'>
-								<span>NOT A VALID MOVE</span>
-							</div>
-						) : (
-							''
-						)}
-						<div className='board_message'>{message}</div>
-						{type ? (
-							<div className='board_message--type'>
-								YOU CHOSE TYPE: {type}{' '}
-							</div>
-						) : (
-							''
-						)}
+		<>
+			<NavBar />
+			<div className='board_wrapper'>
+				<div className='deck_wrapper'>
+					<div className='deck_content_wrapper'>
+						{opponent.map((card, index) => {
+							return (
+								<Card
+									key={index}
+									card={card}
+									selectCard={selectCard}
+									selected={false}
+									gameSession={gameSession}
+									player={false}
+									activeCard={false}
+								/>
+							);
+						})}
 					</div>
-					<div
-						id='deck_displayed'
-						className={deck.length || !gameSession ? '' : 'hidden'}
-					></div>
-					<Card
-						card={activeCard}
-						gameSession={gameSession}
-						player={false}
-						activeCard={true}
-					/>
-					<p className='ace'></p>
+				</div>
+				<div className='board_activecard'>
+					<div className='deck_middle_wrapper'>
+						<div className='board_btnwrapper'>
+							<button className='board_btn' onClick={giveCard}>
+								Draw Card
+							</button>
+							<button
+								className='board_btn'
+								onClick={() => makeMove(selectedCard.current)}
+							>
+								Play Card
+							</button>
+							<div id='restart_btn'>
+								<button
+									className='board_btn'
+									onClick={restartGame}
+								>
+									Restart
+								</button>
+							</div>
+
+							{isValidMove ? (
+								<div className='board_heading'>
+									<span>NOT A VALID MOVE</span>
+								</div>
+							) : (
+								''
+							)}
+							<div className='board_message'>{message}</div>
+							{type ? (
+								<div className='board_message--type'>
+									YOU CHOSE TYPE: {type}{' '}
+								</div>
+							) : (
+								''
+							)}
+						</div>
+						<div
+							id='deck_displayed'
+							className={
+								deck.length || !gameSession ? '' : 'hidden'
+							}
+						></div>
+						<Card
+							card={activeCard}
+							gameSession={gameSession}
+							player={false}
+							activeCard={true}
+						/>
+						<p className='ace'></p>
+					</div>
+				</div>
+				<div className='deck_wrapper'>
+					<div className='deck_content_wrapper'>
+						{player.map((card, index) => {
+							return (
+								<Card
+									key={index}
+									card={card}
+									selectCard={selectCard}
+									selected={_.isEqual(card, chosenCard)}
+									gameSession={gameSession}
+									player={true}
+									activeCard={false}
+									setType={setType}
+								/>
+							);
+						})}
+					</div>
 				</div>
 			</div>
-			<div className='deck_wrapper'>
-				<div className='deck_content_wrapper'>
-					{player.map((card, index) => {
-						return (
-							<Card
-								key={index}
-								card={card}
-								selectCard={selectCard}
-								selected={_.isEqual(card, chosenCard)}
-								gameSession={gameSession}
-								player={true}
-								activeCard={false}
-								setType={setType}
-							/>
-						);
-					})}
-				</div>
-			</div>
-			{/* <Instruction /> */}
-		</div>
+		</>
 	);
 }
 

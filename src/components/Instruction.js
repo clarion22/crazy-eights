@@ -16,7 +16,9 @@ function Instruction() {
 					<h1 class='logo'>Crazy Eights</h1>
 					<ul class='nav'>
 						<li>
-							<NavLink to='/game'>Game</NavLink>
+							<NavLink className='link' to='/game'>
+								Game
+							</NavLink>
 						</li>
 						<li>
 							<a href='#about'>About Me</a>
@@ -36,7 +38,7 @@ function Instruction() {
 							card. Press play after selecting your card to make a
 							move.
 						</p>
-						<NavLink to='/game' class='btn'>
+						<NavLink className='link' to='/game' class='btn'>
 							Play Game
 						</NavLink>
 					</div>
