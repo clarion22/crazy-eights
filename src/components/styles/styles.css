@@ -200,11 +200,10 @@ img {
 	margin-top: 1rem;
 }
 
-/* // .form-control-wrap {
-// 	position: relative;
-// 	display: inline-block;
-// 	width: 100%;
-// } */
+.icon {
+	font-size: 3rem;
+	padding: 10px;
+}
 
 .email-form .form-control {
 	display: inline-block;

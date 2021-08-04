@@ -65,8 +65,12 @@ function Instruction() {
 						<h2>Olga Thompson</h2>
 						<p>Full Stack Software Engineer</p>
 						<p>
-							<a>github</a>
-							<a>linkedin</a>
+							<a href='https://github.com/clarion22/crazy-eights'>
+								<i class='fab fa-github icon'></i>
+							</a>
+							<a href='https://www.linkedin.com/in/olgajt/'>
+								<i class='fab fa-linkedin icon'></i>
+							</a>
 						</p>
 					</div>
 				</div>
