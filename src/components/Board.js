@@ -37,7 +37,6 @@ function Board() {
 	const selectCard = (card) => {
 		selectedCard.current = card;
 		setChosenCard(card);
-		console.log('currentCard', selectedCard.current);
 	};
 
 	const makeMove = (card) => {
@@ -84,7 +83,6 @@ function Board() {
 	};
 
 	useEffect(() => {
-		console.log('player', player);
 		checkWin();
 	}, [totalMoves]);
 
