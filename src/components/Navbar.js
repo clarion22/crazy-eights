@@ -1,14 +1,26 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import './styles/nav.css';
+import { NavLink } from 'react-router-dom';
+import './styles/styles.css';
 
 function Navbar() {
 	return (
-		<div className='navbar'>
-			<NavLink to='/crazy-eights' className='navbar--home'>
-				Crazy Eights
-			</NavLink>
-		</div>
+		<nav class='navbar'>
+			<div class='container'>
+				<NavLink class='logo' to='/crazy-eights'>
+					Crazy Eights
+				</NavLink>
+				<ul class='nav'>
+					<li>
+						<NavLink className='link' to='/game'>
+							Game
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to='/crazy-eights#about'>Connect</NavLink>
+					</li>
+				</ul>
+			</div>
+		</nav>
 	);
 }
 
