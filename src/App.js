@@ -17,7 +17,7 @@ function App() {
 				<Route path='/crazy-eights' exact={true}>
 					<Instruction />
 				</Route>
-				<Route path='/tutorial'>
+				<Route path='/game'>
 					<div className='App'>
 						<Board />
 					</div>

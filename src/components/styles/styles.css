@@ -99,9 +99,11 @@ img {
 .section-b {
 	position: relative;
 	height: 600px;
+	background-color: #cecece;
 }
 
 .section-b-inner {
+	box-sizing: border-box;
 	color: #fff;
 	height: 100%;
 	display: flex;

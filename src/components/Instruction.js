@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import './styles/styles.css';
 import profilepic from './img/profilepic.jpg';
 import cards from './img/cards.jpg';
+import { NavLink } from 'react-router-dom';
 
 function Instruction() {
 	return (
@@ -15,16 +16,10 @@ function Instruction() {
 					<h1 class='logo'>Crazy Eights</h1>
 					<ul class='nav'>
 						<li>
-							<a href='#home'>Home</a>
+							<NavLink to='/game'>Game</NavLink>
 						</li>
 						<li>
-							<a href='#about'>About</a>
-						</li>
-						<li>
-							<a href='#specs'>Specs</a>
-						</li>
-						<li>
-							<a href='#contact'>Contact</a>
+							<a href='#about'>About Me</a>
 						</li>
 					</ul>
 				</div>
@@ -41,18 +36,22 @@ function Instruction() {
 							card. Press play after selecting your card to make a
 							move.
 						</p>
-						<a href='#' class='btn'>
+						<NavLink to='/game' class='btn'>
 							Play Game
-						</a>
+						</NavLink>
 					</div>
 					<img src={cards} alt='cards' />
 				</div>
 			</section>
-			<section id='about' class='section-b'>
-				<div class='overlay' />
-				<div class='section-b-inner py-5' />
+			<section class='section-b'>
+				<div class='section-b-inner py-5'>
+					<video loop autoPlay muted>
+						<source src={vid} type='video/mp4' /> Your browser does
+						not support the video tag.
+					</video>
+				</div>
 			</section>
-			<section>
+			<section id='about'>
 				<div class='about_wrapper'>
 					<div class='aboutcontent_wrapper'>
 						<h1>About me</h1>
