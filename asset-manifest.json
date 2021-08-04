@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/crazy-eights/static/css/main.052a813b.chunk.css",
-    "main.js": "/crazy-eights/static/js/main.7646e61a.chunk.js",
-    "main.js.map": "/crazy-eights/static/js/main.7646e61a.chunk.js.map",
+    "main.css": "/crazy-eights/static/css/main.11d28215.chunk.css",
+    "main.js": "/crazy-eights/static/js/main.993817dd.chunk.js",
+    "main.js.map": "/crazy-eights/static/js/main.993817dd.chunk.js.map",
     "runtime-main.js": "/crazy-eights/static/js/runtime-main.3ef30581.js",
     "runtime-main.js.map": "/crazy-eights/static/js/runtime-main.3ef30581.js.map",
     "static/css/2.679831fc.chunk.css": "/crazy-eights/static/css/2.679831fc.chunk.css",
-    "static/js/2.99025f83.chunk.js": "/crazy-eights/static/js/2.99025f83.chunk.js",
-    "static/js/2.99025f83.chunk.js.map": "/crazy-eights/static/js/2.99025f83.chunk.js.map",
+    "static/js/2.00e80d1d.chunk.js": "/crazy-eights/static/js/2.00e80d1d.chunk.js",
+    "static/js/2.00e80d1d.chunk.js.map": "/crazy-eights/static/js/2.00e80d1d.chunk.js.map",
     "index.html": "/crazy-eights/index.html",
     "static/css/2.679831fc.chunk.css.map": "/crazy-eights/static/css/2.679831fc.chunk.css.map",
-    "static/css/main.052a813b.chunk.css.map": "/crazy-eights/static/css/main.052a813b.chunk.css.map",
-    "static/js/2.99025f83.chunk.js.LICENSE.txt": "/crazy-eights/static/js/2.99025f83.chunk.js.LICENSE.txt",
+    "static/css/main.11d28215.chunk.css.map": "/crazy-eights/static/css/main.11d28215.chunk.css.map",
+    "static/js/2.00e80d1d.chunk.js.LICENSE.txt": "/crazy-eights/static/js/2.00e80d1d.chunk.js.LICENSE.txt",
     "static/media/board.css": "/crazy-eights/static/media/cardback.ea910120.jpg",
+    "static/media/cards.ecdcfd11.jpg": "/crazy-eights/static/media/cards.ecdcfd11.jpg",
     "static/media/croppedcrazyeights.86cdf0ee.mp4": "/crazy-eights/static/media/croppedcrazyeights.86cdf0ee.mp4",
-    "static/media/dice2.8bd78625.jpg": "/crazy-eights/static/media/dice2.8bd78625.jpg"
+    "static/media/profilepic.c9d159cd.jpg": "/crazy-eights/static/media/profilepic.c9d159cd.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.3ef30581.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.99025f83.chunk.js",
-    "static/css/main.052a813b.chunk.css",
-    "static/js/main.7646e61a.chunk.js"
+    "static/js/2.00e80d1d.chunk.js",
+    "static/css/main.11d28215.chunk.css",
+    "static/js/main.993817dd.chunk.js"
   ]
 }
