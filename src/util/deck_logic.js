@@ -48,7 +48,11 @@ export const generateDeck = () => {
 };
 
 export const validMove = (card, activeCard) => {
-	if (card.type === activeCard.type || card.value === activeCard.value)
+	if (
+		card.type === activeCard.type ||
+		card.value === activeCard.value ||
+		card.value === 8
+	)
 		return true;
 	return false;
 };
