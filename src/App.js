@@ -13,16 +13,13 @@ import './App.css';
 function App() {
 	return (
 		<BrowserRouter>
-			<Navbar />
 			<Switch>
 				<Route path='/crazy-eights' exact={true}>
-					<div className='App'>
-						<Board />
-					</div>
+					<Instruction />
 				</Route>
 				<Route path='/tutorial'>
 					<div className='App'>
-						<Instruction />
+						<Board />
 					</div>
 				</Route>
 			</Switch>
