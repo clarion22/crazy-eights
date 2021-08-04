@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './styles/styles.css';
 
 function Navbar() {
@@ -16,7 +16,7 @@ function Navbar() {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/crazy-eights#about'>About Me</NavLink>
+						<NavLink to='/crazy-eights#about'>Connect</NavLink>
 					</li>
 				</ul>
 			</div>

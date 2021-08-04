@@ -1,8 +1,6 @@
 import React from 'react';
 import vid from '../assets/croppedcrazyeights.mp4';
-import dice from '../assets/dice2.jpg';
 import './styles/board.css';
-import Navbar from './Navbar';
 import './styles/styles.css';
 import profilepic from './img/profilepic.jpg';
 import cards from './img/cards.jpg';
@@ -21,7 +19,7 @@ function Instruction() {
 							</NavLink>
 						</li>
 						<li>
-							<a href='#about'>About Me</a>
+							<a href='#about'>Connect</a>
 						</li>
 					</ul>
 				</div>

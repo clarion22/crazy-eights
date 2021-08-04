@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { dealDeck, dealCard, playCard, opponentPlay } from '../store/game';
-import { validMove, movesLeft } from '../util/deck_logic';
-import { NavLink } from 'react-router-dom';
+import { validMove } from '../util/deck_logic';
 import Card from './Card';
 import _ from 'lodash';
 import './styles/board.css';
