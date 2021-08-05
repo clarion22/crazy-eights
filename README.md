@@ -6,7 +6,7 @@ The goal is to be the first player to get rid of all the cards in your hand
 2. Select a card and press play to make a move
 3. Click draw card if you don't have a card to play
 4. If you choose an 8, you can set the next suit of the opponent
-
+![crazyeights](https://user-images.githubusercontent.com/66930118/128421413-ecbdb071-dbc1-443f-99ef-eb338c29ebf1.gif)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
